@@ -1,18 +1,20 @@
-#include <iostream>
+#include<iostream>
 
-int binCoef(int n, int k) {
-   if (k == 0 || k == n)
-   return 1;
-   return binCoef(n - 1, k - 1) + binCoef(n - 1, k);
+uint64_t bincoef(uint64_t a, uint64_t b){
+    uint64_t n = 1;
+    for(uint64_t i = b; i < a; i++){
+        n *= i + 1;
+        n /= i - b + 1;
+    }
+    return n;
 }
 
 int main(){
-    int d;
-    uint64_t a, b, c;
-    std::cin >> d;
-    for(int i = 0; i < d; i++){
+    int c;
+    uint64_t a, b;
+    std::cin >> c;
+    for(int i = 0; i < c; i++){
         std::cin >> a >> b;
-        c = binCoef(a , b);
-        std::cout << c << std::endl;
+        std::cout << bincoef(a, b) << std::endl;
     }
 }
